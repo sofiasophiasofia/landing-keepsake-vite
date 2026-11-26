@@ -1,0 +1,60 @@
+@use '../abstracts' as *;
+
+.clients {
+  &__logos {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+
+    @include mq(md) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    @include mq(lg) {
+      grid-template-columns: repeat(6, 1fr);
+    }
+  }
+
+  // “Логотипи” клієнтів - текст різними шрифтами; шрифт задає модифікатор
+  &__logo {
+    @include flex-center;
+
+    height: rem(72);
+    font-size: rem(22);
+    line-height: rem(33);
+    letter-spacing: 1px;
+    color: var(--color-logo);
+
+    &--nordly {
+      font-family: var(--font-oswald);
+      font-weight: 700;
+    }
+
+    &--halcyon {
+      font-family: var(--font-dancing-script);
+      font-weight: 700;
+    }
+
+    &--arco {
+      font-family: var(--font-oswald);
+      font-weight: 300;
+    }
+
+    &--pinewood {
+      font-family: var(--font-open-sans);
+      font-weight: 700;
+      letter-spacing: 0;
+    }
+
+    &--vela {
+      font-family: var(--font-oswald);
+      font-weight: 400;
+      letter-spacing: 3px;
+    }
+
+    &--ostra {
+      font-family: var(--font-open-sans);
+      font-weight: 300;
+      letter-spacing: 0;
+    }
+  }
+}

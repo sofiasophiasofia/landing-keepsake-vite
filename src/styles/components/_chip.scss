@@ -1,0 +1,22 @@
+@use '../abstracts' as *;
+
+// Чипс фільтра портфоліо. Активний стан (радіокнопка :checked) - у _works.scss
+.chip {
+  @include flex-center(row, inline-flex);
+  @include uppercase-label(var(--fs-ui), 1px);
+
+  flex-shrink: 0;
+  height: rem(34);
+  padding: 0 rem(16);
+  border: 1px solid var(--color-border);
+  background-color: var(--color-white);
+  color: var(--color-text-dark);
+  line-height: rem(18);
+  white-space: nowrap;
+  cursor: pointer;
+
+  &:hover {
+    border-color: var(--color-accent);
+    color: var(--color-accent);
+  }
+}

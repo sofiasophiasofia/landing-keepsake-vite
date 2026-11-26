@@ -1,0 +1,40 @@
+@use '../abstracts' as *;
+
+.header {
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  height: var(--header-height);
+  background-color: var(--color-white);
+  border-bottom: 1px solid var(--color-border);
+
+  &__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  // Прихований checkbox керує мобільним меню без JavaScript:
+  // :checked ~ сусідній .nav / .burger
+  &__toggle {
+    @include visually-hidden;
+
+    &:checked ~ .nav {
+      display: flex;
+    }
+
+    &:checked ~ .burger .burger__icon--open {
+      display: none;
+    }
+
+    &:checked ~ .burger .burger__icon--close {
+      display: block;
+    }
+
+    &:focus-visible ~ .burger {
+      @include focus-ring;
+    }
+  }
+}

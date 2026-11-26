@@ -4,7 +4,7 @@
   @include visually-hidden;
 }
 
-// SVG-спрайт з іконками: у DOM є, але нічого не займає
+// SVG-спрайт: у DOM є, але місця не займає
 .svg-sprite {
   position: absolute;
   width: 0;

@@ -1,0 +1,16 @@
+@use '../abstracts' as *;
+
+.read-more {
+  @include uppercase-label(12, 1.5px);
+
+  display: inline-flex;
+  align-items: center;
+  align-self: flex-start;
+  gap: rem(6);
+  line-height: rem(18);
+  color: var(--color-accent);
+
+  &:hover {
+    color: var(--color-accent-hover);
+  }
+}

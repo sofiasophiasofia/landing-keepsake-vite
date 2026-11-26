@@ -1,0 +1,24 @@
+// Порядок важливий там, де один блок “змішується” з іншим (однакова специфічність):
+// базові блоки (btn, socials) підключаються ДО блоків, що їх змінюють (nav, newsletter).
+@forward 'btn';
+@forward 'socials';
+@forward 'logo';
+@forward 'burger';
+@forward 'favourites';
+@forward 'nav';
+@forward 'hero';
+@forward 'chip';
+@forward 'work-card';
+@forward 'works';
+@forward 'cta';
+@forward 'service-card';
+@forward 'services';
+@forward 'stats';
+@forward 'clients';
+@forward 'slider-dots';
+@forward 'testimonial';
+@forward 'read-more';
+@forward 'journal-card';
+@forward 'journal';
+@forward 'newsletter';
+@forward 'to-top';

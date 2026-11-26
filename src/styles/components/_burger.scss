@@ -1,0 +1,19 @@
+@use '../abstracts' as *;
+
+// Кнопка-label мобільного меню. Перемикання іконок - у layout/_header.scss (:checked ~)
+.burger {
+  @include flex-center;
+
+  width: rem(40);
+  height: rem(40);
+  cursor: pointer;
+  color: var(--color-text-dark);
+
+  @include mq(md) {
+    display: none;
+  }
+
+  &__icon--close {
+    display: none;
+  }
+}

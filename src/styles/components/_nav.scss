@@ -1,0 +1,123 @@
+@use '../abstracts' as *;
+
+// Мобільне меню - випадна панель; від md - горизонтальна навігація в шапці.
+// Відкривається через .header__toggle:checked ~ .nav (layout/_header.scss).
+.nav {
+  display: none;
+  position: fixed;
+  inset: var(--header-height) 0 0;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: rem(24);
+  padding: rem(20) var(--container-padding) rem(32);
+  overflow-y: auto;
+  background-color: var(--color-white);
+
+  @include mq(md) {
+    display: flex;
+    position: static;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 0;
+    overflow: visible;
+    background-color: transparent;
+  }
+
+  @include mq(lg) {
+    gap: rem(40);
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+
+    @include mq(md) {
+      flex-direction: row;
+      gap: rem(24);
+    }
+
+    @include mq(lg) {
+      gap: rem(40);
+    }
+  }
+
+  &__item {
+    border-bottom: 1px solid var(--color-border);
+
+    @include mq(md) {
+      border-bottom: none;
+    }
+  }
+
+  &__link {
+    @include uppercase-label(24, 2px, 300);
+
+    display: block;
+    padding: rem(16) 0;
+    line-height: 1.25;
+    color: var(--color-text-dark);
+
+    &:hover,
+    &--active {
+      color: var(--color-accent);
+    }
+
+    @include mq(md) {
+      padding: 0;
+      font-weight: 400;
+      font-size: rem(13);
+      line-height: rem(19);
+      letter-spacing: 1px;
+    }
+  }
+
+  &__actions {
+    display: flex;
+    flex-direction: column;
+    gap: rem(12);
+
+    @include mq(md) {
+      flex-direction: row;
+    }
+  }
+
+  // кнопка “Contact us” у мобільному меню (на md+ є пункт Contact)
+  &__cta {
+    width: 100%;
+
+    @include mq(md) {
+      display: none;
+    }
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    gap: rem(8);
+    padding: rem(20);
+    background-color: var(--color-bg-light);
+
+    @include mq(md) {
+      display: none;
+    }
+  }
+
+  &__info-label {
+    @include uppercase-label(12, 1.5px);
+
+    color: var(--color-muted);
+  }
+
+  &__info-text {
+    color: var(--color-text-dark);
+  }
+
+  &__socials {
+    justify-content: center;
+
+    @include mq(md) {
+      display: none;
+    }
+  }
+}

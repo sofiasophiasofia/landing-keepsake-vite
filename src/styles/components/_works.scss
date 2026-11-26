@@ -1,0 +1,125 @@
+@use '../abstracts' as *;
+
+.works {
+  // Радіокнопки фільтра: сховані, але доступні з клавіатури
+  &__radio {
+    @include visually-hidden;
+  }
+
+  &__head {
+    display: flex;
+    flex-direction: column;
+    gap: rem(18);
+    margin-bottom: rem(22);
+
+    @include mq(md) {
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: rem(24);
+    }
+  }
+
+  // На мобільному чипси скролляться по горизонталі
+  &__chips {
+    display: flex;
+    gap: rem(8);
+    overflow-x: auto;
+    margin-right: calc(var(--container-padding) * -1);
+    padding-right: var(--container-padding);
+    scrollbar-width: none;
+
+    @include mq(md) {
+      overflow: visible;
+      margin-right: 0;
+      padding-right: 0;
+    }
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: rem(12);
+
+    @include mq(md) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include mq(lg) {
+      grid-template-columns: repeat(3, 1fr);
+      gap: rem(14);
+    }
+  }
+
+  &__more {
+    display: flex;
+    justify-content: center;
+    margin-top: rem(28);
+  }
+
+  &__load-more {
+    width: 100%;
+
+    @include mq(md) {
+      width: auto;
+    }
+  }
+}
+
+// ----- CSS-only фільтр: :checked ~ -----
+// Правила генеруються з $filter-slugs (abstracts/_variables.scss).
+
+// Активний чипс і фокус з клавіатури
+@each $slug in $filter-slugs {
+  .works__radio[value='#{$slug}']:checked
+    ~ .works__head
+    .chip[data-filter='#{$slug}'] {
+    border-color: var(--color-accent);
+    background-color: var(--color-accent);
+    color: var(--color-white);
+  }
+
+  .works__radio[value='#{$slug}']:focus-visible
+    ~ .works__head
+    .chip[data-filter='#{$slug}'] {
+    @include focus-ring;
+  }
+}
+
+// Ховаємо картки інших категорій
+@each $slug in $filter-slugs {
+  @if $slug != 'all' {
+    .works__radio[value='#{$slug}']:checked
+      ~ .works__grid
+      .work-card:not([data-category='#{$slug}']) {
+      display: none;
+    }
+  }
+}
+
+// “All”: 5 карток на мобільному, 8 на планшеті, 9 на десктопі
+.works__radio[value='all']:checked ~ .works__grid .work-card:nth-child(n + 6) {
+  display: none;
+}
+
+@include mq(md) {
+  .works__radio[value='all']:checked
+    ~ .works__grid
+    .work-card:nth-child(n + 6) {
+    display: block;
+  }
+
+  .works__radio[value='all']:checked
+    ~ .works__grid
+    .work-card:nth-child(n + 9) {
+    display: none;
+  }
+}
+
+@include mq(lg) {
+  .works__radio[value='all']:checked
+    ~ .works__grid
+    .work-card:nth-child(n + 9) {
+    display: block;
+  }
+}

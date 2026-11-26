@@ -1,4 +1,7 @@
-// Ховає елемент візуально, але лишає його доступним для скрінрідерів.
+@use 'sass:meta';
+@use 'functions' as *;
+
+/// Ховає елемент візуально, але залишає його для скрінрідерів і клавіатури.
 @mixin visually-hidden {
   position: absolute;
   width: 1px;
@@ -11,14 +14,38 @@
   border: 0;
 }
 
-// Видимий індикатор фокусу з клавіатури (параметри за замовчуванням).
+/// Кільце фокуса. Параметри мають значення за замовчуванням.
 @mixin focus-ring($color: var(--color-teal), $offset: 2px) {
   outline: 2px solid $color;
   outline-offset: $offset;
 }
 
-@mixin flex-center {
-  display: flex;
+/// Центрування flex-вмісту за обома осями.
+@mixin flex-center($direction: row, $display: flex) {
+  display: $display;
+  flex-direction: $direction;
   align-items: center;
   justify-content: center;
+}
+
+/// Oswald, великі літери: повторюваний “лейбл” інтерфейсу.
+/// $size - число (px, піде в rem) або готове значення, напр. var(--fs-ui).
+@mixin uppercase-label($size: 12, $spacing: 1px, $weight: 400) {
+  font-family: var(--font-oswald);
+  font-weight: $weight;
+  letter-spacing: $spacing;
+  text-transform: uppercase;
+
+  @if meta.type-of($size) == 'number' {
+    font-size: rem($size);
+  } @else {
+    font-size: $size;
+  }
+}
+
+/// Стилі для користувачів, які вимкнули анімації в системі.
+@mixin reduced-motion {
+  @media (prefers-reduced-motion: reduce) {
+    @content;
+  }
 }

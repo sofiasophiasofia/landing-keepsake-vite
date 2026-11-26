@@ -1,0 +1,39 @@
+@use '../abstracts' as *;
+
+.favourites {
+  @include flex-center;
+  @include uppercase-label(var(--fs-ui), 1px);
+
+  gap: rem(8);
+  width: 100%;
+  height: rem(40);
+  border: 1px solid var(--color-border);
+  background-color: var(--color-white);
+  color: var(--color-text-dark);
+
+  &:hover {
+    border-color: var(--color-accent);
+    color: var(--color-accent);
+  }
+
+  // на планшеті й десктопі - квадратна кнопка тільки з іконкою
+  @include mq(md) {
+    width: rem(36);
+    height: rem(36);
+    padding: 0;
+    border: none;
+    background-color: var(--color-accent);
+    color: var(--color-white);
+
+    &:hover {
+      background-color: var(--color-accent-hover);
+      color: var(--color-white);
+    }
+  }
+
+  &__text {
+    @include mq(md) {
+      display: none;
+    }
+  }
+}

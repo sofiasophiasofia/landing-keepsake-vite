@@ -1,0 +1,70 @@
+@use '../abstracts' as *;
+
+.work-card {
+  position: relative;
+  aspect-ratio: 1 / 0.72;
+  overflow: hidden;
+  background-color: var(--color-bg-light);
+  cursor: pointer;
+
+  @include mq(md) {
+    aspect-ratio: 1 / 0.79;
+  }
+
+  &__picture {
+    display: block;
+    height: 100%;
+  }
+
+  &__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  &__overlay {
+    @include flex-center(column);
+
+    position: absolute;
+    inset: 0;
+    gap: rem(10);
+    background-color: var(--color-overlay);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  &:hover &__overlay,
+  &:focus-visible &__overlay,
+  &:focus-within &__overlay {
+    opacity: 1;
+  }
+
+  &__icon {
+    @include flex-center;
+
+    width: rem(44);
+    height: rem(44);
+    border-radius: 50%;
+    background-color: var(--color-teal);
+    color: var(--color-white);
+  }
+
+  &__title {
+    @include uppercase-label(17, 1.5px);
+
+    line-height: rem(25);
+    color: var(--color-white);
+  }
+
+  &__divider {
+    width: rem(30);
+    height: 2px;
+    background-color: var(--color-accent);
+  }
+
+  &__category {
+    font-size: rem(13);
+    line-height: rem(18);
+    color: var(--color-teal);
+  }
+}

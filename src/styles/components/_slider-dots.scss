@@ -1,0 +1,17 @@
+@use '../abstracts' as *;
+
+.slider-dots {
+  display: flex;
+  gap: rem(8);
+
+  &__dot {
+    width: rem(8);
+    height: 4px;
+    background-color: var(--color-dot);
+
+    &--active {
+      width: rem(24);
+      background-color: var(--color-accent);
+    }
+  }
+}

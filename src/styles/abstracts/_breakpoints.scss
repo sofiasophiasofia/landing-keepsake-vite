@@ -1,19 +1,20 @@
 @use 'sass:map';
 
-// Брейкпоінти (mobile first): стилі за замовчуванням - для мобільних,
-// далі лише min-width.
+// Брейкпоінти з lab-07: планшет (md) і десктоп (lg)
 $breakpoints: (
-  'md': 768px,
-  'lg': 1280px,
+  md: 768px,
+  lg: 1280px,
 );
 
-// Використання: @include mq(md) { ... }
-@mixin mq($breakpoint) {
-  @if not map.has-key($breakpoints, $breakpoint) {
-    @error 'Невідомий брейкпоінт `#{$breakpoint}`. Доступні: #{map.keys($breakpoints)}';
+/// Mobile first: усередині лише min-width. Значення беремо з map-а,
+/// тому змінити брейкпоінт можна в одному місці.
+/// @example scss - @include mq(md) { ... }
+@mixin mq($bp) {
+  @if not map.has-key($breakpoints, $bp) {
+    @error 'Unknown breakpoint: #{$bp}';
   }
 
-  @media (min-width: map.get($breakpoints, $breakpoint)) {
+  @media (min-width: #{map.get($breakpoints, $bp)}) {
     @content;
   }
 }

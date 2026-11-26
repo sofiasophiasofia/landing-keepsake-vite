@@ -1,3 +1,27 @@
+@use '../abstracts' as *;
+
 .section {
   padding-top: var(--section-padding);
+
+  &__title {
+    @include uppercase-label(18, 1.5px);
+
+    display: flex;
+    align-items: center;
+    gap: rem(12);
+    line-height: rem(27);
+    color: var(--color-text-dark);
+
+    // коралова риска після заголовка
+    &::after {
+      content: '';
+      width: rem(16);
+      height: 2px;
+      background-color: var(--color-accent);
+    }
+  }
+
+  &__desc {
+    margin: rem(14) 0;
+  }
 }
