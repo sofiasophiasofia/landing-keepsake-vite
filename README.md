@@ -2,7 +2,7 @@
 
 Лендінг студії **Keepsake** (той самий макет, що в lab-07), зібраний за професійним фронтенд-процесом: **Vite + Pug + SCSS**, PostCSS (Autoprefixer + Browserslist), адаптивні зображення AVIF/WebP/JPEG та автоматичний контроль якості (Prettier, Stylelint, husky, lint-staged).
 
-**Демо:** https://<ВАШ_ЛОГІН>.github.io/landing-keepsake-vite/
+**Демо:** https://sofiasophiasofia.github.io/landing-keepsake-vite/
 
 > Без фреймворків і UI-бібліотек. Мобільне меню та фільтр портфоліо працюють на чистому CSS (`:checked ~`), JavaScript на сторінці немає.
 
