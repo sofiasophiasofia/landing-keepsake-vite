@@ -1,1 +1,35 @@
 header.header
+  .container.header__inner
+    a.logo(href='#top', aria-label=`${site.name} - home`)
+      span.logo__mark(aria-hidden='true') K
+      span.logo__text(aria-hidden='true') eepsake
+
+    //- Мобільне меню без JavaScript: checkbox + label + селектор сусіда (~)
+    input#menu-toggle.header__toggle(type='checkbox', aria-controls='main-nav')
+    label.burger(for='menu-toggle')
+      span.visually-hidden Menu
+      +icon('burger').burger__icon.burger__icon--open
+      +icon('close').burger__icon.burger__icon--close
+
+    nav#main-nav.nav(aria-label='Main')
+      ul.nav__list
+        each link, i in navigation
+          li.nav__item
+            a.nav__link(
+              href=link.href,
+              class={ 'nav__link--active': link.active },
+              aria-current=link.active ? 'page' : false
+            )= link.label
+
+      .nav__actions
+        +btn('Contact us', '#contact').nav__cta
+        button.favourites(type='button', aria-label='Favourites')
+          +icon('heart')
+          span.favourites__text Favourites
+
+      .nav__info
+        p.nav__info-label Get in touch
+        p.nav__info-text= site.email
+        p.nav__info-text= site.phone
+
+      +socials(socialLinks).nav__socials

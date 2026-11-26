@@ -1,0 +1,21 @@
++section(
+  null,
+  'Clients & kind words',
+  'Some of the teams that trusted us with their brands.',
+).clients
+  ul.clients__logos
+    each client in clients
+      li.clients__logo(class=`clients__logo--${client.slug}`)= client.name
+
+  blockquote.testimonial
+    span.testimonial__quote-mark(aria-hidden='true') &ldquo;
+    p.testimonial__text= testimonial.text
+    footer.testimonial__author
+      .testimonial__person
+        .testimonial__avatar(aria-hidden='true')= testimonial.initials
+        div
+          p.testimonial__name= testimonial.author
+          p.testimonial__role= testimonial.role
+      .slider-dots(aria-hidden='true')
+        each slide, i in Array.from({ length: testimonial.slides })
+          span.slider-dots__dot(class={ 'slider-dots__dot--active': i === 0 })

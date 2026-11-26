@@ -1,0 +1,24 @@
+section#works.works.section
+  .container
+    //- Радіокнопки мають бути СУСІДАМИ .works__head і .works__grid, щоб працював :checked ~
+    each category in categories
+      input.works__radio(
+        type='radio',
+        name='portfolio-filter',
+        id=`filter-${category.slug}`,
+        value=category.slug,
+        checked=category.slug === 'all'
+      )
+
+    .works__head
+      h2.section__title Our awesome works
+      .works__chips
+        each category in categories
+          label.chip(for=`filter-${category.slug}`, data-filter=category.slug)= category.label
+
+    .works__grid
+      each work, i in works
+        +work-card(work, i)
+
+    .works__more
+      +btn('Load more works', null, 'secondary').works__load-more

@@ -1,20 +1,33 @@
 extends ../layouts/main
 
-block data
-  include ../data/site
+block title
+  | #{ site.name } | Digital &amp; Branding Agency
 
-//- append: додаємо до блоку meta, не замінюючи charset і viewport
+//- append: додаємо description і Open Graph, не заміняючи charset/viewport з макета
 block append meta
-  meta(name='description', content=site.description)
-  meta(property='og:type', content='website')
-  meta(property='og:site_name', content=site.name)
-  meta(property='og:title', content=site.title)
-  meta(property='og:description', content=site.description)
-  meta(property='og:url', content=site.url)
+  include ../includes/meta
 
-//- prepend: шрифти мають бути перед main.scss
+//- prepend: шрифти підключаються ДО основної таблиці стилів
 block prepend styles
   include ../includes/fonts
 
 block content
-  h1 Keepsake
+  include ../components/sections/hero
+  include ../components/sections/works
+  include ../components/sections/cta
+  include ../components/sections/services
+  include ../components/sections/stats
+  include ../components/sections/journal
+  include ../components/sections/clients
+
+//- append scripts: мікророзмітка для пошуковиків (це не виконуваний JS)
+block append scripts
+  -
+    const jsonLd = {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      name: site.name,
+      email: site.email,
+      telephone: site.phone,
+    }
+  script(type='application/ld+json')!= JSON.stringify(jsonLd)

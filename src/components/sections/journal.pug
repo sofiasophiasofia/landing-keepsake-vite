@@ -1,0 +1,8 @@
++section(
+  'journal',
+  'From the journal',
+  'Notes on process, case studies and things that inspire us.',
+).journal
+  .journal__grid
+    each post in posts
+      +journal-card(post)
