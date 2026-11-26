@@ -1,0 +1,20 @@
+mixin journal-card(post)
+  article.journal-card
+    .journal-card__thumb
+      +picture({
+        name: post.image,
+        alt: '',
+        width: 150,
+        height: 150,
+        widths: [96, 150],
+        sizes: '(min-width: 768px) 150px, 96px',
+        pictureClass: 'journal-card__picture',
+        imgClass: 'journal-card__img',
+      })
+    .journal-card__content
+      p.journal-card__meta #{ post.date } &nbsp;/&nbsp; #{ post.category }
+      h3.journal-card__title= post.title
+      p.journal-card__excerpt= post.excerpt
+      a.read-more(href='#')
+        | Read more
+        +icon('chevron')

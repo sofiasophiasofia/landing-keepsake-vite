@@ -1,0 +1,27 @@
+//- +icon(name, width, height)(...attrs) - іконка зі SVG-спрайта (includes/svg-sprite.pug).
+//- case/when підбирає розмір за назвою; width/height - необов’язкові власні значення.
+mixin icon(name, width, height)
+  case name
+    when 'heart'
+      - var size = [16, 14.4];
+    when 'mail'
+      - var size = [14, 10];
+    when 'chevron'
+      - var size = [5, 9];
+    when 'burger'
+      - var size = [22, 16];
+    when 'close'
+      - var size = [22, 22];
+    when 'arrow-up'
+      - var size = [12, 14];
+    when 'monitor'
+      - var size = [42, 30];
+    when 'film'
+      - var size = [40, 32];
+    when 'print'
+      - var size = [42, 34];
+    default
+      - var size = [16, 16];
+
+  svg(width=width || size[0], height=height || size[1], aria-hidden='true')&attributes(attributes)
+    use(href=`#icon-${name}`)

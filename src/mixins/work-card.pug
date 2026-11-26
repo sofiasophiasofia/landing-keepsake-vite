@@ -1,0 +1,22 @@
+//- +work-card(work, i) - картка роботи. Перша (i = 0) вантажиться одразу з fetchpriority="high",
+//- решта - lazy.
+mixin work-card(work, i)
+  article.work-card(data-category=work.category, tabindex='0')
+    +picture({
+      name: work.image,
+      alt: work.alt,
+      width: 358,
+      height: 282,
+      widths: [240, 358],
+      sizes: '(min-width: 1280px) 357px, (min-width: 768px) 50vw, 100vw',
+      pictureClass: 'work-card__picture',
+      imgClass: 'work-card__img',
+      lazy: i > 0,
+      priority: i === 0,
+    })
+    .work-card__overlay
+      span.work-card__icon(aria-hidden='true')
+        +icon('plus')
+      h3.work-card__title= work.title
+      .work-card__divider
+      span.work-card__category= categoryLabel(work.category)

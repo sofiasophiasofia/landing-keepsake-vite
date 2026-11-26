@@ -1,0 +1,64 @@
+//- SVG-спрайт: усі іконки сайту (растр не використовується). Підключається в макеті.
+//- Виводяться через +icon(name) -> <use href="#icon-name">
+svg.svg-sprite(aria-hidden='true')
+  symbol#icon-heart(viewBox='0 0 16 14.4')
+    path(
+      fill='currentColor',
+      d='M8 14.4C-3 6.5 1.5-1 5.5.6 6.8 1.1 7.6 2 8 3 8.4 2 9.2 1.1 10.5.6 14.5-1 19 6.5 8 14.4Z'
+    )
+  symbol#icon-plus(viewBox='0 0 16 16')
+    path(
+      fill='none',
+      stroke='currentColor',
+      stroke-width='2',
+      d='M8 1v14M1 8h14'
+    )
+  symbol#icon-mail(viewBox='0 0 14 10')
+    rect(
+      x='.5',
+      y='.5',
+      width='13',
+      height='9',
+      fill='none',
+      stroke='currentColor'
+    )
+    path(fill='none', stroke='currentColor', d='M.5 1l6.5 5 6.5-5')
+  symbol#icon-chevron(viewBox='0 0 5 9')
+    path(
+      fill='none',
+      stroke='currentColor',
+      stroke-width='1.2',
+      d='M.5.5l4 4-4 4'
+    )
+  symbol#icon-burger(viewBox='0 0 22 16')
+    g(fill='currentColor')
+      rect(y='0', width='22', height='2')
+      rect(y='7', width='22', height='2')
+      rect(y='14', width='22', height='2')
+  symbol#icon-close(viewBox='0 0 22 22')
+    path(
+      fill='none',
+      stroke='currentColor',
+      stroke-width='2',
+      d='M3 3l16 16M19 3L3 19'
+    )
+  symbol#icon-arrow-up(viewBox='0 0 12 14')
+    path(
+      fill='none',
+      stroke='currentColor',
+      stroke-width='2',
+      d='M6 14V2M1 7l5-5 5 5'
+    )
+  symbol#icon-monitor(viewBox='0 0 42 30')
+    g(fill='none', stroke='currentColor', stroke-width='2')
+      rect(x='1', y='1', width='40', height='22')
+      path(d='M21 23v5M13 29h16')
+  symbol#icon-film(viewBox='0 0 40 32')
+    g(fill='none', stroke='currentColor', stroke-width='2')
+      rect(x='1', y='7', width='38', height='24')
+      path(d='M12 1l8 6 8-6')
+  symbol#icon-print(viewBox='0 0 42 34')
+    g(fill='none', stroke='currentColor', stroke-width='2')
+      path(d='M11 17V1h20v16')
+      rect(x='1', y='17', width='40', height='16')
+      path(d='M11 25h20')

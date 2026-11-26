@@ -1,0 +1,18 @@
+//- +btn(label, href, variant)(...attrs)
+//- block - вкладений вміст (наприклад, іконка перед підписом), &attributes - довільні атрибути.
+//- Без href рендерить <button>, з href - <a>.
+mixin btn(label, href, variant = 'primary')
+  case variant
+    when 'secondary'
+      - var modifier = 'btn--secondary';
+    default
+      - var modifier = 'btn--primary';
+
+  if href
+    a.btn(class=modifier, href=href)&attributes(attributes)
+      block
+      | #{ label }
+  else
+    button.btn(class=modifier, type=attributes.type || 'button')&attributes(attributes)
+      block
+      | #{ label }

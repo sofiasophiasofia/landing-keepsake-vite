@@ -1,0 +1,6 @@
+mixin service-card(service)
+  article.service-card
+    .service-card__icon
+      +icon(service.icon, service.iconWidth, service.iconHeight)
+    h3.service-card__title= service.title
+    p.service-card__text= service.text

@@ -1,0 +1,9 @@
+//- +socials(items)(class="...") - список соцмереж. Модифікатор кольору береться зі slug.
+mixin socials(items)
+  .socials&attributes(attributes)
+    each item in items
+      a.socials__link(
+        class=`socials__link--${item.slug}`,
+        href=item.href,
+        aria-label=item.label
+      )= item.text

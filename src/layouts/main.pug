@@ -1,19 +1,48 @@
-//- Базовий макет. Дані (змінна site) підключає сторінка в блоці data,
-//- тому на початку макета вони вже доступні в head.
-block data
+//- Дані та міксини підключаємо один раз у макеті: вони доступні в усіх блоках сторінки.
+include ../data/site
+include ../data/navigation
+include ../data/socials
+include ../data/works
+include ../data/services
+include ../data/stats
+include ../data/journal
+include ../data/clients
+include ../data/footer
+
+include ../mixins/btn
+include ../mixins/icon
+include ../mixins/picture
+include ../mixins/work-card
+include ../mixins/section
+include ../mixins/service-card
+include ../mixins/journal-card
+include ../mixins/stat
+include ../mixins/socials
 
 doctype html
-html(lang=site.lang)
+html(lang='en')
   head
     block meta
       meta(charset='UTF-8')
       meta(name='viewport', content='width=device-width, initial-scale=1.0')
-    block title
-      title= site.title
+
+    title
+      block title
+        | #{ site.name }
+
     block styles
       link(rel='stylesheet', href='/src/styles/main.scss')
+
   body#top
-    include ../includes/sprite
+    include ../includes/svg-sprite
+    include ../components/header
+
     main
       block content
+
+    include ../components/footer
+
+    a.to-top(href='#top', aria-label='Back to top')
+      +icon('arrow-up')
+
     block scripts

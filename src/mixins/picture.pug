@@ -1,0 +1,26 @@
+//- +picture({ name, alt, width, height, widths, sizes, imgClass, pictureClass, lazy, priority })
+//- AVIF -> WebP -> JPEG, кожен із srcset/sizes. Шляхи /src/... обробляє Vite (хеші, base).
+//- lazy (за замовчуванням true) - loading="lazy"; priority - fetchpriority="high" для першого екрана.
+mixin picture(opts)
+  -
+    const dir = "/src/assets/images"
+    const largest = opts.widths[opts.widths.length - 1]
+    const lazy = opts.lazy !== false
+    const srcset = (ext) =>
+      opts.widths.map((w) => `${dir}/${opts.name}-${w}.${ext} ${w}w`).join(", ")
+
+  picture(class=opts.pictureClass)&attributes(attributes)
+    source(type='image/avif', srcset=srcset('avif'), sizes=opts.sizes)
+    source(type='image/webp', srcset=srcset('webp'), sizes=opts.sizes)
+    img(
+      class=opts.imgClass,
+      src=`${dir}/${opts.name}-${largest}.jpg`,
+      srcset=srcset('jpg'),
+      sizes=opts.sizes,
+      alt=opts.alt || '',
+      width=opts.width,
+      height=opts.height,
+      loading=lazy ? 'lazy' : false,
+      decoding='async',
+      fetchpriority=opts.priority ? 'high' : false
+    )

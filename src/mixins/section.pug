@@ -1,0 +1,9 @@
+//- +section(id, title, desc)(class="...") - обгортка секції із заголовком.
+//- block - вміст секції, &attributes - додаткові класи/атрибути (напр. class="services").
+mixin section(id, title, desc)
+  section.section(id=id)&attributes(attributes)
+    .container
+      h2.section__title= title
+      if desc
+        p.section__desc= desc
+      block
