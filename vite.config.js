@@ -1,8 +1,10 @@
+import { defineConfig } from 'vite';
 import vituum from 'vituum';
 import pug from '@vituum/vite-plugin-pug';
 import path from 'path';
 
-export default {
+export default defineConfig(({ command }) => ({
+  base: command === 'build' ? '/landing-keepsake-vite/' : '/',
   plugins: [
     vituum({
       imports: {
@@ -20,4 +22,4 @@ export default {
       '@assets': path.resolve(import.meta.dirname, 'src/assets'),
     },
   },
-};
+}));
