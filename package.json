@@ -16,6 +16,8 @@
   "devDependencies": {
     "@prettier/plugin-pug": "^3.6.0",
     "@vituum/vite-plugin-pug": "^1.1.0",
+    "husky": "^9.1.7",
+    "lint-staged": "^17.6.2",
     "prettier": "^3.10.1",
     "sass": "^1",
     "stylelint": "^18.1.0",
