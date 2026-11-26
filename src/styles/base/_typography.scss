@@ -1,0 +1,16 @@
+@use '../abstracts' as *;
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: var(--header-height);
+}
+
+body {
+  padding-top: var(--header-height);
+  font-family: var(--font-open-sans);
+  font-weight: 400;
+  font-size: rem(14);
+  line-height: rem(22);
+  color: var(--color-text);
+  background-color: var(--color-white);
+}

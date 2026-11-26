@@ -1,0 +1,31 @@
+@use 'sass:map';
+@use '../abstracts' as *;
+
+// Значення розмірних токенів для одного брейкпоінта.
+// Окремий міксин, щоб не було глибокої вкладеності.
+@mixin layout-tokens($breakpoint) {
+  @each $name, $steps in $layout {
+    @if map.has-key($steps, $breakpoint) {
+      --#{$name}: #{map.get($steps, $breakpoint)};
+    }
+  }
+}
+
+// Токени -> CSS custom properties
+:root {
+  @each $name, $value in $colors {
+    --color-#{$name}: #{$value};
+  }
+
+  @each $name, $value in $fonts {
+    --font-#{$name}: #{$value};
+  }
+
+  @include layout-tokens('base');
+
+  @each $breakpoint in map.keys($breakpoints) {
+    @include mq($breakpoint) {
+      @include layout-tokens($breakpoint);
+    }
+  }
+}

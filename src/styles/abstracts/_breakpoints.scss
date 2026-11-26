@@ -1,0 +1,19 @@
+@use 'sass:map';
+
+// Брейкпоінти (mobile first): стилі за замовчуванням - для мобільних,
+// далі лише min-width.
+$breakpoints: (
+  'md': 768px,
+  'lg': 1280px,
+);
+
+// Використання: @include mq(md) { ... }
+@mixin mq($breakpoint) {
+  @if not map.has-key($breakpoints, $breakpoint) {
+    @error 'Невідомий брейкпоінт `#{$breakpoint}`. Доступні: #{map.keys($breakpoints)}';
+  }
+
+  @media (min-width: map.get($breakpoints, $breakpoint)) {
+    @content;
+  }
+}

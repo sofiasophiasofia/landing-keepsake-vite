@@ -1,0 +1,13 @@
+@use '../abstracts' as *;
+
+.visually-hidden {
+  @include visually-hidden;
+}
+
+// SVG-спрайт з іконками: у DOM є, але нічого не займає
+.svg-sprite {
+  position: absolute;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+}

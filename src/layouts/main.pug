@@ -1,21 +1,19 @@
+//- Базовий макет. Дані (змінна site) підключає сторінка в блоці data,
+//- тому на початку макета вони вже доступні в head.
+block data
+
 doctype html
-html(lang='en')
+html(lang=site.lang)
   head
     block meta
-      meta(charset='utf-8')
-      meta(name='viewport', content='width=device-width, initial-scale=1')
+      meta(charset='UTF-8')
+      meta(name='viewport', content='width=device-width, initial-scale=1.0')
     block title
-      title Vite Pug Template
-    block fonts
-    block main-scripts
+      title= site.title
     block styles
       link(rel='stylesheet', href='/src/styles/main.scss')
-  body
-    block data
-    block header
-      header.page-header header
-    block content
-      main.page-main content
-    block footer
-      footer.page-footer footer
-    block add-scripts
+  body#top
+    include ../includes/sprite
+    main
+      block content
+    block scripts
